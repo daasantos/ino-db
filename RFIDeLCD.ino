@@ -9,19 +9,19 @@ LiquidCrystal lcd(RS, E, D4, D5, D6, D7);
 
 void setup() 
 {
-  Serial.begin(9600);   // Inicia a serial
-  SPI.begin();      	// Inicia SPI bus
-  mfrc522.PCD_Init();   // Inicia MFRC522
+  Serial.begin(9600);
+  SPI.begin();
+  mfrc522.PCD_Init();
   lcd.begin(16, 2);
 }
  
 void loop() 
 {
-  Serial.println("Aproxime o seu cartao do leitor...");
+  Serial.println("Hold your card next to the reader...");
   lcd.clear();
-  lcd.print(" Aproxime o seu");  
+  lcd.print(" Hold your card");  
   lcd.setCursor(0, 1);
-  lcd.print("cartao do leitor");  
+  lcd.print("next to the reader");  
   
   if (!mfrc522.PICC_IsNewCardPresent()){return;}
   if (!mfrc522.PICC_ReadCardSerial()){return;}
@@ -30,8 +30,8 @@ void loop()
   lcd.print(" TAG: ");  
   lcd.setCursor(0, 1);
   
-  //Mostra UID no serial monitor
-  Serial.print("UID da tag :");
+  //Display UID on serial monitor
+  Serial.print("UID:");
   for (uint8_t i = 0; i < mfrc522.uid.size; i++) {
      Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
      Serial.print(mfrc522.uid.uidByte[i], HEX);
