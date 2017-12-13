@@ -1,17 +1,14 @@
-#!/usr/bin/python
-#install mysql-connector-python-rf
-#chmod 755 /.../.../stuff.py
-#print("{}, {}".format(first_name, last_name))
-
+#!usr/bin/python
 import mysql.connector
 import sys
+
 RFID = sys.argv[1]
 
 try: 
 	db = mysql.connector.connect(host="localhost",    # your host, usually localhost
 								 user="stuff",        # your username
 								 passwd="morestuff",  # your password
-								 db="verystuff")      # name of the data base
+								 db="verystuff")      # name of the database
 	if db.is_Connected():
 		print "Connection sucessful."
 	
@@ -30,7 +27,8 @@ try:
 	
 except Error as e:
 	print(e)
-# If error happens, finally will execute before interruption by exception handling
+# If error happens, finally will execute no matter what
 finally:
 	cursor.close()
 	cnx.close()
+	raise SystemExit
