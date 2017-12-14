@@ -6,9 +6,9 @@ RFID = sys.argv[1]
 
 try: 
 	db = mysql.connector.connect(host="localhost",    # your host, usually localhost
-								 user="stuff",        # your username
-								 passwd="morestuff",  # your password
-								 db="verystuff")      # name of the database
+					user="stuff",        # your username
+					passwd="morestuff",  # your password
+					db="verystuff")      # name of the database
 	if db.is_Connected():
 		print "Connection sucessful."
 	
@@ -17,7 +17,7 @@ try:
 	cursor.execute(query, RFID)
 	
 	row = cursor.fetchone()
-	if row = None:
+	if row == None:
 		print row
 		raise SystemExit
 	
@@ -27,7 +27,6 @@ try:
 	
 except Error as e:
 	print(e)
-# If error happens, finally will execute no matter what
 finally:
 	cursor.close()
 	cnx.close()
